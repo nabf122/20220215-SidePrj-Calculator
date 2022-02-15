@@ -31,6 +31,7 @@ public class Calculator extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
