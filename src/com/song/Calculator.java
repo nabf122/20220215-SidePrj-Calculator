@@ -13,6 +13,9 @@ public class Calculator extends JFrame implements ActionListener {
 
 	String btn[] = { "7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "*", "0", ".", "=", "/" };
 	String num = "";
+	String num2 = "";
+	int op = 0;
+	double result = 0;
 	
 	JLabel label;
 	
@@ -72,9 +75,70 @@ public class Calculator extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		if(e.getSource() == btn[0])
+		if(e.getActionCommand() == btn[0])
 		{
-			num = num + btn[0];
+			num += btn[0];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[1])
+		{
+			num = num + btn[1];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[2])
+		{
+			num = num + btn[2];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[3])
+		{
+			num += btn[3];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[4])
+		{
+			num = num + btn[4];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[5])
+		{
+			num = num + btn[5];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[6])
+		{
+			num = num + btn[6];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[7])
+		{
+			num = num + btn[7];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[8])
+		{
+			num = num + btn[8];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[9])
+		{
+			num = num + btn[9];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[10])
+		{
+			num = num + btn[10];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[11])
+		{
+			num = num + btn[11];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[12])
+		{
+			num = num + btn[12];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[13])
+		{
+			num = num + btn[13];
+			label.setText(num);
+		}else if(e.getActionCommand() == btn[14])
+		{
+			System.out.println(label.getText());
+			
+			label.setText(num);
+		}else
+		{
+			num = num + btn[15];
 			label.setText(num);
 		}
 		
