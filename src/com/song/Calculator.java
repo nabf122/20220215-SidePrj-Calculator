@@ -127,7 +127,7 @@ public class Calculator extends JFrame implements ActionListener {
 			num = "";
 		}
 		else if(str.equals("=")) {
-			num2 = Integer.parseInt(num);
+			num2 = Double.parseDouble(num);
 			
 			if(op.equals("+"))
 			{
@@ -217,12 +217,14 @@ public class Calculator extends JFrame implements ActionListener {
 		else if(str.equals(".")) {
 			num += str;
 			label.setText(num);
+			System.out.println(num);
 		}
 		else
 		{
 			num += str;
 			num2 = Double.parseDouble(num);
 			label.setText(num);
+			System.out.println(num);
 		}
 	}
 	
