@@ -11,18 +11,22 @@ import java.awt.event.ActionEvent;
 
 public class Calculator extends JFrame implements ActionListener {
 
-	String btn[] = { "7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "*", "0", ".", "=", "/" };
+	String btn[] = { 
+			"%", "C", "x^2", "←",
+			"7", "8", "9", "+", 
+			"4", "5", "6", "-", 
+			"1", "2", "3", "x", 
+			"0", ".", "=", "/" };
 
 	// 사칙연산을 가지고 있는 변수
 	String op = "";
 	
 	// 연산 식을 보여주는 변수
 	String disp = "";
-	
-	String disp_set = "";
+	String num = "";
 	
 	// 실제 연산에 사용되는 변수들
-	int num1, num2;
+	double num1 = 0, num2 = 0;
 	
 	// 최종 결과 값
 	double result = 0;
@@ -39,7 +43,7 @@ public class Calculator extends JFrame implements ActionListener {
 				
 		// 버튼 패널
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(4,4,2,2));
+		panel.setLayout(new GridLayout(5,4,2,2));
 		
 		
 		// 버튼 생성
@@ -60,20 +64,30 @@ public class Calculator extends JFrame implements ActionListener {
 		
 	}
 	
-	public int plus(int a, int b) {
-		
-		int num = 0;
-		
+	public double plus(double a, double b) {
+		double num = 0;
 		num = a + b;
 		
 		return num;
 	}
 		
-	public int sub(int a, int b) {
-		
-		int num = 0;
-		
+	public double sub(double a, double b) {
+		double num = 0;
 		num = a - b;
+		
+		return num;
+	}
+	
+	public double mul(double a, double b) {
+		double num = 0;
+		num = a * b;
+		
+		return num;
+	}
+	
+	public double div(double a, double b) {
+		double num = 0;
+		num = a / b;
 		
 		return num;
 	}
@@ -87,48 +101,123 @@ public class Calculator extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-		if(e.getActionCommand() == "+") {
-			if(op.equals("+")) {
-				num2 = Integer.parseInt(disp_set);
-				result = plus(num1, num2);
-				num1 = (int) result;
-				op ="";
-			} else {
-				disp += "+";
-				label.setText(disp);
-				op = "+";
-				num1 = Integer.parseInt(disp_set);
-				disp_set = "";
-			}
-		}
-		else if(e.getActionCommand() == "-") {
-			if(op.equals("-")) {
-				num2 = Integer.parseInt(disp_set);
-				result = sub(num1, num2);
-				num1 = (int) result;
-				op ="";
-			} else {
-				disp += "+";
-				label.setText(disp);
-				op = "+";
-				num1 = Integer.parseInt(disp_set);
-				disp_set = "";
-			}
-		}
-		else if(e.getActionCommand() == "*") {
-			
-		}
-		else if(e.getActionCommand() == "/") {
-			
-		}
-		else if(e.getActionCommand() == "=") {
-			
-		}
-		else {
-			if(e.getActionCommand() == btn[0])
-			disp += btn[0];
-			disp_set += btn[0];
+		String str = e.getActionCommand();
+		
+		if(str.equals("+")) {
+			op = str;
+			num1 = Integer.parseInt(num);
+			disp += str;
 			label.setText(disp);
+			num = "";
+		}
+		else if(str.equals("-")) {
+			op = str;
+			num1 = Integer.parseInt(num);
+			disp += str;
+			label.setText(disp);
+			num = "";
+		}
+		else if(str.equals("x")) {
+			op = str;
+			num1 = Integer.parseInt(num);
+			disp += str;
+			label.setText(disp);
+			num = "";
+		}
+		else if(str.equals("/")) {
+			op = str;
+			num1 = Integer.parseInt(num);
+			disp += str;
+			label.setText(disp);
+			num = "";
+		}
+		else if(str.equals("=")) {
+			num2 = Integer.parseInt(num);
+			
+			if(op.equals("+"))
+			{
+				result = plus(num1, num2);
+				label.setText(String.valueOf(result));
+				num1 = 0;
+				num2 = 0;
+				op = "";
+				disp = "";
+				result = 0;
+			}
+			else if(op.equals("-"))
+			{
+				result = sub(num1, num2);
+				label.setText(String.valueOf(result));
+				num1 = 0;
+				num2 = 0;
+				op = "";
+				disp = "";
+				result = 0;
+			}
+			else if(op.equals("x"))
+			{
+				result = mul(num1, num2);
+				label.setText(String.valueOf(result));
+				num1 = 0;
+				num2 = 0;
+				op = "";
+				disp = "";
+				result = 0;
+			}
+			else
+			{
+				result = div(num1, num2);
+				label.setText(String.valueOf(result));
+				num1 = 0;
+				num2 = 0;
+				op = "";
+				disp = "";
+				result = 0;
+			}
+		}
+		else if(str.equals("%")) {
+			num1 = Integer.parseInt(num);
+			result = num1 / 100;
+			label.setText(String.valueOf(result));
+			num1 = 0;
+			num2 = 0;
+			op = "";
+			disp = "";
+			result = 0;
+		}
+		else if(str.equals("C")) {
+			label.setText("0");
+			num1 = 0;
+			num2 = 0;
+			op = "";
+			disp = "";
+			num = "";
+			result = 0;
+		}
+		else if(str.equals("x^2")) {
+			num1 = Integer.parseInt(num);
+			result = num1 * num1;
+			label.setText(String.valueOf(result));
+			num1 = 0;
+			num2 = 0;
+			op = "";
+			disp = "";
+			result = 0;
+		}
+		else if(str.equals("x^2")) {
+			num1 = Integer.parseInt(num);
+			result = num1 * num1;
+			label.setText(String.valueOf(result));
+			num1 = 0;
+			num2 = 0;
+			op = "";
+			disp = "";
+			result = 0;
+		}
+		else
+		{
+			num += str;
+			label.setText(num);
 		}
 	}
 }
