@@ -202,6 +202,7 @@ public class Calculator extends JFrame implements ActionListener {
 		else if(str.equals("ก็")) {
 			num = label.getText();
 			num = num.substring(0, num.length() -1);
+			num2 = Double.parseDouble(num);
 			label.setText(num);
 			if(num.length() < 1)
 			{
@@ -217,14 +218,12 @@ public class Calculator extends JFrame implements ActionListener {
 		else if(str.equals(".")) {
 			num += str;
 			label.setText(num);
-			System.out.println(num);
 		}
 		else
 		{
 			num += str;
 			num2 = Double.parseDouble(num);
 			label.setText(num);
-			System.out.println(num);
 		}
 	}
 	
