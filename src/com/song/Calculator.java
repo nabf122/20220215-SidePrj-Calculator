@@ -91,11 +91,6 @@ public class Calculator extends JFrame implements ActionListener {
 		
 		return num;
 	}
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		new Calculator();
-	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -105,28 +100,28 @@ public class Calculator extends JFrame implements ActionListener {
 		
 		if(str.equals("+")) {
 			op = str;
-			num1 = Integer.parseInt(num);
+			num1 = num2;
 			disp += str;
 			label.setText(disp);
 			num = "";
 		}
 		else if(str.equals("-")) {
 			op = str;
-			num1 = Integer.parseInt(num);
+			num1 = num2;
 			disp += str;
 			label.setText(disp);
 			num = "";
 		}
 		else if(str.equals("x")) {
 			op = str;
-			num1 = Integer.parseInt(num);
+			num1 = num2;
 			disp += str;
 			label.setText(disp);
 			num = "";
 		}
 		else if(str.equals("/")) {
 			op = str;
-			num1 = Integer.parseInt(num);
+			num1 = num2;
 			disp += str;
 			label.setText(disp);
 			num = "";
@@ -138,7 +133,7 @@ public class Calculator extends JFrame implements ActionListener {
 			{
 				result = plus(num1, num2);
 				label.setText(String.valueOf(result));
-				num1 = 0;
+				num1 = result;
 				num2 = 0;
 				op = "";
 				disp = "";
@@ -148,7 +143,7 @@ public class Calculator extends JFrame implements ActionListener {
 			{
 				result = sub(num1, num2);
 				label.setText(String.valueOf(result));
-				num1 = 0;
+				num1 = result;
 				num2 = 0;
 				op = "";
 				disp = "";
@@ -158,7 +153,7 @@ public class Calculator extends JFrame implements ActionListener {
 			{
 				result = mul(num1, num2);
 				label.setText(String.valueOf(result));
-				num1 = 0;
+				num1 = result;
 				num2 = 0;
 				op = "";
 				disp = "";
@@ -168,7 +163,7 @@ public class Calculator extends JFrame implements ActionListener {
 			{
 				result = div(num1, num2);
 				label.setText(String.valueOf(result));
-				num1 = 0;
+				num1 = result;
 				num2 = 0;
 				op = "";
 				disp = "";
@@ -176,10 +171,10 @@ public class Calculator extends JFrame implements ActionListener {
 			}
 		}
 		else if(str.equals("%")) {
-			num1 = Integer.parseInt(num);
+			num1 = Double.parseDouble(num);
 			result = num1 / 100;
 			label.setText(String.valueOf(result));
-			num1 = 0;
+			num1 = result;
 			num2 = 0;
 			op = "";
 			disp = "";
@@ -195,29 +190,44 @@ public class Calculator extends JFrame implements ActionListener {
 			result = 0;
 		}
 		else if(str.equals("x^2")) {
-			num1 = Integer.parseInt(num);
+			num1 = Double.parseDouble(num);
 			result = num1 * num1;
 			label.setText(String.valueOf(result));
-			num1 = 0;
+			num1 = result;
 			num2 = 0;
 			op = "";
 			disp = "";
 			result = 0;
 		}
-		else if(str.equals("x^2")) {
-			num1 = Integer.parseInt(num);
-			result = num1 * num1;
-			label.setText(String.valueOf(result));
-			num1 = 0;
-			num2 = 0;
-			op = "";
-			disp = "";
-			result = 0;
+		else if(str.equals("ก็")) {
+			num = label.getText();
+			num = num.substring(0, num.length() -1);
+			label.setText(num);
+			if(num.length() < 1)
+			{
+				label.setText("0");
+				num1 = 0;
+				num2 = 0;
+				op = "";
+				disp = "";
+				num = "";
+				result = 0;
+			}
+		}
+		else if(str.equals(".")) {
+			num += str;
+			label.setText(num);
 		}
 		else
 		{
 			num += str;
+			num2 = Double.parseDouble(num);
 			label.setText(num);
 		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Calculator();
 	}
 }
