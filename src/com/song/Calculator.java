@@ -28,6 +28,7 @@ public class Calculator extends JFrame implements ActionListener {
 	// 실제 연산에 사용되는 변수들
 	double num1 = 0, num2 = 0;
 	
+	
 	// 최종 결과 값
 	double result = 0;
 	
